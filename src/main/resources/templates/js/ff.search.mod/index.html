@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<title> FriendFlix  </title>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+ <style>
+  #selectable .ui-selecting { background: #FECA40; }
+  #selectable .ui-selected { background: #F39814; color: white; }
+  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+
+
+.demo-list-two {
+  width: 300px;
+}
+
+body {
+  padding: 20px;
+  background: #fafafa;
+  position: relative;
+}
+  </style>
+  
+</head>
+
+
+
+<body>
+
+
+<div ng-app="ffSearchApp" ng-controller="ffSearchCtrl">
+  <form>
+		<input class="input--style" type="text" name="" 
+		ng-model="movieName" ng-model-options="{ debounce: 200 }" 
+     ng-change="getMovies(movieName)" >
+		<button ng-click="addMovie(movieName)">Add Movie</button>
+  </form>
+	<ol id="selectable" ng-repeat="movie in movieList">
+		<li class="ui-widget-content">{{movie}}</li>
+	</ol>
+	<hr>
+		
+ <div class="ffMovie">
+	<!--<ul ng-repeat="movie in movieDetailList">
+		<li class="ui-widget-content">
+			movie Name : 	{{movie.Name}}
+			movie genere : 	{{movie.genere}}
+			movie actors : 	{{movie.actors}}
+			movie description : 	{{movie.desc}}
+			movie punchLines : 	{{movie.punchLines}}
+			movie img : 	{{movie.img}}
+		</li>
+	</ul>
+-->
+
+	<ul class="demo-list-two mdl-list" ng-repeat="movie in movieDetailList">
+	<li class="mdl-list__item--two-line">
+    <span class="mdl-list__item-primary-content">
+    <i class="material-icons mdl-list__item-avatar">{{movie.img}}</i>
+		<span>{{movie.name}}</span>
+    <span class="mdl-list__item-sub-title">{{movie.actors}}</span>
+    <span class="mdl-list__item-sub-title">{{movie.genere}}</span>
+	</li>
+	<li class="mdl-list__item">
+   <span class="mdl-list__item-primary-content">
+	 {{movie.desc}}
+	 </span>
+	</li>
+	<li class="mdl-list__item">
+	{{movie.punchLines}}
+	</li>
+	</ul>
+	<!--<ul class="demo-list-two mdl-list" ng-repeat="movie in movieDetailList">
+
+
+	<li class="mdl-list__item mdl-list__item--three-line">
+        <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-avatar">person</i>
+					<span>{{movie.name}}</span>
+          <span class="mdl-list__item-sub-title">{{movie.actors}}</span>
+        </span>
+        <span class="mdl-list__item-secondary-content">
+          <span class="mdl-list__item-secondary-info">Actor</span>
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">{{movie.img}}</i></a>
+        </span>
+				<span class="mdl-list__item-text-body">
+          <span class="mdl-list__item-secondary-info">Actor</span>
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">{{movie.img}}</i></a>
+        </span>
+      </li>
+		</ul> -->
+ </div>
+
+
+</div>
+
+
+<script src="ffSearchApp.js"></script>
+<script src="ffSearchCtrl.js"></script>
+
+</body>
+</html>
